@@ -1,15 +1,28 @@
 public class Door {
 
-	private boolean locked;
+
+	private boolean locked = false;
 	public String name;
 	
-    public Door(boolean invalue,String name) {
-		this.locked=invalue;
+    public Door(String name, boolean locked) {
+		this.locked=locked;
+		this.name = name;
+	}
+
+    public Door(String name) {
 		this.name = name;
 	}
 	
-	public boolean getlocked(){
-		return this.locked;
+	public String getName(){
+		return name;
+	}
+	
+	public boolean getLocked(){
+		return locked;
+	}
+	
+	public void unLock(){
+		locked=false;
 	}
 	
 }

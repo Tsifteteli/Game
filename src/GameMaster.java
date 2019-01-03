@@ -1,33 +1,63 @@
+import java.util.Scanner;
+
 public class GameMaster {
 
+	private Player player1;
+	private Room[][] room = new Room[5][5];
 
-    public GameMaster(String Playername) {
+	    public GameMaster(Player player) {
 
-		System.out.println("Hej !");
-      System.out.println(Playername+" Please wait while the game is getting ready for you...");
+		//player1  = new Player(name);
+		player1 = player;
 		
-		Player player = new Player(Playername);
+		//Setting up rooms
+		// Room("Room Name","Room Narritive",Door North,Door South,Door West,Door East,Boolean isExit);
+
+		Door lockedDoor1 = new Door("Door",true);
 		
-		
-		Room[][] room = new Room[3][2];
-		
-		
-		room[0][0] = new Room("Ett",null,new Door(true,"Gate1"),null,null);
-		room[1][0] = new Room("Två",new Door(true,"GateN"),new Door(true,"GateS"),new Door(true,"GateW"),new Door(true,"GateE"));
-		room[2][0] = new Room("Tre",null,null,new Door(true,"GateW"),null);
+		room[0][0] = new Room("Cave entry","In the bottom of the hole there is a gloomy entry to the dark caves",null,new Door("GateEentry"),null,null,false);
+		room[1][0] = new Room("Studdy","A big room with desk and cocking fire.",new Door("GateEentry"),new Door("Smal opening"),null,lockedDoor1,false);
+		room[1][1] = new Room("Smal side room","Not mutch but a low tunnel.",null,new Door("Low tunnel"),lockedDoor1,null,false);
+		room[2][0] = new Room("Bedroom","Smal sideroom with a bed.",new Door("Smal opening"),null,null,null,false);
+		room[2][1] = new Room("The End","Cave opening to the frech air.",null,null,null,null,true);
 		
 		
 	}
 	
 	public void runGame(){
 		
-		while(true){
+	
+		Boolean rungameloop = true;
+		Room currentRoom;
+
+		//Start room
+		int i=0;
+		int j=0;
+		
+		do{
+			currentRoom=room[i][j];
+			currentRoom.enterRoom();
+			if(currentRoom.isExit()){break;}
 			
+			currentRoom.getChose(player1);
+			if(!currentRoom.goToNextRoom(player1)){
+				String chose = player1.getChose();
+				switch (chose){
+					case "n": i--; break;
+					case "s": i++; break;
+					case "w": j--; break;
+					case "e": j++; break;
+					case "q":
+						System.out.println("Quit game.");
+						rungameloop=false;
+						break;
+				}
+			}
 			
-		}
+		}while(rungameloop);
+		
 		
 		
 	}
-	
-	
+		
 }
