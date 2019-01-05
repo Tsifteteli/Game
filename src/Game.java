@@ -10,6 +10,7 @@ public class Game {
         System.out.print("Please enter your name:");
         Scanner scan= new Scanner(System.in);
         String name= scan.nextLine();
+        // Create a new player
         Player player1 = new Player(name);
 
         System.out.println(" ");
@@ -17,6 +18,7 @@ public class Game {
         System.out.println(" ");
         System.out.println(" ");
 
+        //Create a new game and send the player reference into it.
         GameMaster gamemaster = new GameMaster(player1);
         gamemaster.runGame();
 
