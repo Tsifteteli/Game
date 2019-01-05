@@ -17,8 +17,8 @@ public class Game {
 		System.out.println(" ");
 		System.out.println(" ");
 		
-		GameMaster game = new GameMaster(player1);
-		game.runGame();
+		GameMaster gamemaster = new GameMaster(player1);
+		gamemaster.runGame();
 		
 		System.out.println(" ");
 		System.out.println(" ");
