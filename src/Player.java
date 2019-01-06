@@ -12,11 +12,11 @@ public class Player {
 	
     public Boolean hasKey(){
         Boolean key = false;
-        if(item != null){
+/*        if(item != null){
             if(item.getType()=="Key"){
                 key = true;
             }
-        }
+        }*/
         return key;
     }
 

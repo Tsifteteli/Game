@@ -60,7 +60,7 @@ public class GameMaster {
             if(!currentRoom.goToNextRoom(player1)){
                 String chose = player1.getChose();
                 switch (chose){
-                    case "i": player1.reciveItem(currentRoom.getItem());
+                    case "i": player1.reciveItem(currentRoom.getItem());break;
                     case "n": i--; break;
                     case "s": i++; break;
                     case "w": j--; break;
