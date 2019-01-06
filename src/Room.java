@@ -9,8 +9,9 @@ public class Room {
     private Door doorS=null;
     private Door doorW=null;
     private Door doorE=null;
-    private ArrayList<String> choseList = new ArrayList<String>();
     private Boolean isExit = false;
+    private ArrayList<String> choseList = new ArrayList<String>();
+    private Item item=null;
 	
     public Room(String name,String narritive,Door doorN,Door doorS,Door doorW, Door doorE,Boolean isExit) {
         this.name = name;
@@ -21,7 +22,25 @@ public class Room {
         this.doorE = doorE;
         this.isExit = isExit;
     }
-	
+    
+    public Room(String name,String narritive,Door doorN,Door doorS,Door doorW, Door doorE,Boolean isExit, Item item){
+        this.name = name;
+        this.narritive = narritive;
+        this.doorN = doorN;
+        this.doorS = doorS;
+        this.doorW = doorW;
+        this.doorE = doorE;
+        this.isExit = isExit;
+        this.item = item;
+        
+    }
+
+    public Item getItem(){
+        Item tempitem = item;
+        item = null;
+        return tempitem;
+    }
+    
     public Boolean isExit(){
         return isExit;
     }
@@ -66,7 +85,7 @@ public class Room {
         System.out.println("#-----------------------------");
         System.out.println("# "+narritive);
         System.out.println("#-----------------------------");
-
+        if(item!=null){System.out.println("# "+item.getType()+" is able to pick up"); choseList.add("i");}
         if(doorN!=null){System.out.println("# "+doorN.getName()+" to the North"); choseList.add("n");}
         if(doorS!=null){System.out.println("# "+doorS.getName()+" to the South"); choseList.add("s");}
         if(doorW!=null){System.out.println("# "+doorW.getName()+" to the West"); choseList.add("w");}
@@ -79,6 +98,7 @@ public class Room {
 
         String chose = "";
 
+        if(item!=null){System.out.println("Enter i to pick up Item"); }
         if(doorN!=null){System.out.println("Enter n to go North"); }
         if(doorS!=null){System.out.println("Enter s to go South"); }
         if(doorW!=null){System.out.println("Enter w to go West"); }

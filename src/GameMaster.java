@@ -35,7 +35,7 @@ public class GameMaster {
             room[0][0] = new Room("Cave entry","In the bottom of the hole there is a gloomy entry to the dark caves",null,new Door("GateEentry"),null,null,false);
             room[1][0] = new Room("Studdy","A big room with desk and cocking fire.",new Door("GateEentry"),new Door("Smal opening"),null,lockedDoor1,false);
             room[1][1] = new Room("Smal side room","Not mutch but a low tunnel.",null,new Door("Low tunnel"),lockedDoor1,null,false);
-            room[2][0] = new Room("Bedroom","Smal sideroom with a bed.",new Door("Smal opening"),null,null,null,false);
+            room[2][0] = new Room("Bedroom","Smal sideroom with a bed.",new Door("Smal opening"),null,null,null,false,new Item());
             room[2][1] = new Room("The End","Cave opening to the frech air.",null,null,null,null,true);
 
 
@@ -60,6 +60,7 @@ public class GameMaster {
             if(!currentRoom.goToNextRoom(player1)){
                 String chose = player1.getChose();
                 switch (chose){
+                    case "i": player1.reciveItem(currentRoom.getItem());
                     case "n": i--; break;
                     case "s": i++; break;
                     case "w": j--; break;
